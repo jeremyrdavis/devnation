@@ -3,6 +3,15 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+group :development, :test do
+	gem 'rspec-rails', '2.13.1'
+end
+
+group :test do
+	gem 'capybara', '2.1.0'
+	gem 'selenium-webdriver', '2.35.1'
+end
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
