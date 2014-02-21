@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 group :development, :test do
+	gem 'annotate', '2.4.0'
 	gem 'rspec-rails', '2.13.1'
 	gem 'guard-rspec', '2.5.0'
 	gem 'spork-rails', '4.0.0'
@@ -40,6 +41,10 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# Javascript library
+gem 'execjs'
+gem 'therubyracer'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
