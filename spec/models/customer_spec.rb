@@ -2,24 +2,34 @@
 
 describe Customer do
 
-	before { @customer = Customer.new(email: "bob@texasplayboys.com", first_name: "Bob", last_name: "Wills")}
+	before { @customer = Customer.new(email: "bob@texasplayboys.com", first_name: "Bob", last_name: "Wills", password: "foo", password_confirmation: "foo")}
 	subject { @customer }
 
 	it { should respond_to(:first_name)}
 	it { should respond_to(:last_name)}
 	it { should respond_to(:email)}
+	it { should respond_to(:password_digest)}
+	it { should respond_to(:password)}
+	it { should respond_to(:password_confirmation)}
 	it { should be_valid }
 
 	# validations
 	it "should not be valid without email" do
-		Customer.new(first_name: "Bob", last_name: "Wills").should_not be_valid
+		Customer.new(first_name: "Bob", last_name: "Wills", password: "foo", password_confirmation: "foo").should_not be_valid
 	end
 	it "should not be valid without first_name" do
-		Customer.new(last_name: "Wills", email: "bob@texasplayboys").should_not be_valid
+		Customer.new(last_name: "Wills", email: "bob@texasplayboys", password: "foo", password_confirmation: "foo").should_not be_valid
 	end
 	it "should not be valid without last_name" do
-		Customer.new(first_name: "Bob", email: "bob@texasplayboys").should_not be_valid
+		Customer.new(first_name: "Bob", email: "bob@texasplayboys", password: "foo", password_confirmation: "foo").should_not be_valid
 	end
+	it "should not be valid withou a password and a password_confirmation" do
+		Customer.new(first_name: "Bob", last_name: "Wills", email: "bob@texasplayboys").should_not be_valid
+	end
+	it "should not be valid when the password and password_confirmation don't match" do
+		Customer.new(first_name: "Bob", email: "bob@texasplayboys", password: "foo", password_confirmation: "bar").should_not be_valid
+	end
+
 
 	# check for email validity
 	it "should contain a valid email address" do
@@ -32,7 +42,7 @@ describe Customer do
 	end
 
 	it "should be valid when the email address is valid" do
-		customer = Customer.new(first_name: "Bob", last_name: "Wills")
+		customer = Customer.new(first_name: "Bob", last_name: "Wills", password: "foo", password_confirmation: "foo")
 		addresses = %w[user@foo.com user_@foo.com _user@foo.com user@foo.org user@foo.it user@foo.gov]
 		addresses.each do |valid_address|
 			customer.email = valid_address

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222142325) do
+ActiveRecord::Schema.define(version: 20140301004434) do
 
   create_table "accounts", force: true do |t|
     t.integer  "customer_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140222142325) do
     t.string   "gender"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
