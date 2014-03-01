@@ -11,6 +11,7 @@ describe Customer do
 	it { should respond_to(:password_digest)}
 	it { should respond_to(:password)}
 	it { should respond_to(:password_confirmation)}
+	it { should respond_to(:authenticate)}
 	it { should be_valid }
 
 	# validations
@@ -65,5 +66,24 @@ describe Customer do
 		c3 = Customer.find_by_first_name("Eldon")
 		c3.email.should == "eldon@texasplayboys.com"
 	end
+
+	# authentication tests
+	describe "return value of authentication method" do
+		  before { @customer.save }
+		  let(:found_customer) { Customer.find_by(email: @customer.email) }
+	
+		describe "with valid password" do
+			it { should eq found_customer.authenticate(@customer.password) }
+		end
+
+		describe "with invalid password" do
+			let(:customer_for_invalid_password) { found_customer.authenticate("invalid") }
+
+			it { should_not eq customer_for_invalid_password }
+			specify { expect(customer_for_invalid_password).to be_false }
+		end
+	end
+
+
 
 end
