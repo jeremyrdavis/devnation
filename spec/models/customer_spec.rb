@@ -2,7 +2,7 @@
 
 describe Customer do
 
-	before { @customer = Customer.new(email: "bob@texasplayboys.com", first_name: "Bob", last_name: "Wills", password: "foo", password_confirmation: "foo")}
+	before { @customer = Customer.new(email: "bob@texasplayboys.com", first_name: "Bob", last_name: "Wills", password: "foobarbaz", password_confirmation: "foobarbaz")}
 	subject { @customer }
 
 	it { should respond_to(:first_name)}
@@ -16,26 +16,26 @@ describe Customer do
 
 	# validations
 	it "should not be valid without email" do
-		Customer.new(first_name: "Bob", last_name: "Wills", password: "foo", password_confirmation: "foo").should_not be_valid
+		Customer.new(first_name: "Bob", last_name: "Wills", password: "foobarbaz", password_confirmation: "foobarbaz").should_not be_valid
 	end
 	it "should not be valid without first_name" do
-		Customer.new(last_name: "Wills", email: "bob@texasplayboys", password: "foo", password_confirmation: "foo").should_not be_valid
+		Customer.new(last_name: "Wills", email: "bob@texasplayboys", password: "foobarbaz", password_confirmation: "foobarbaz").should_not be_valid
 	end
 	it "should not be valid without last_name" do
-		Customer.new(first_name: "Bob", email: "bob@texasplayboys", password: "foo", password_confirmation: "foo").should_not be_valid
+		Customer.new(first_name: "Bob", email: "bob@texasplayboys", password: "foobarbaz", password_confirmation: "foobarbaz").should_not be_valid
 	end
 	it "should not be valid withou a password and a password_confirmation" do
 		Customer.new(first_name: "Bob", last_name: "Wills", email: "bob@texasplayboys").should_not be_valid
 	end
 	it "should not be valid when the password and password_confirmation don't match" do
-		Customer.new(first_name: "Bob", email: "bob@texasplayboys", password: "foo", password_confirmation: "bar").should_not be_valid
+		Customer.new(first_name: "Bob", email: "bob@texasplayboys", password: "foobarbaz", password_confirmation: "bar").should_not be_valid
 	end
 
 
 	# check for email validity
 	it "should contain a valid email address" do
 		customer = Customer.new(first_name: "Bob", last_name: "Wills")
-		addresses = %w[user@foo,com user_at_foo.com foo.com user@ user@foo user@foo_bar.com user@foo+bar.com]
+		addresses = %w[user@foobarbaz,com user_at_foobarbaz.com foobarbaz.com user@ user@foobarbaz user@foobarbaz_bar.com user@foobarbaz+bar.com]
 		addresses.each do |invalid_address|
 			customer.email = invalid_address
 			expect(customer).not_to be_valid
@@ -43,8 +43,8 @@ describe Customer do
 	end
 
 	it "should be valid when the email address is valid" do
-		customer = Customer.new(first_name: "Bob", last_name: "Wills", password: "foo", password_confirmation: "foo")
-		addresses = %w[user@foo.com user_@foo.com _user@foo.com user@foo.org user@foo.it user@foo.gov]
+		customer = Customer.new(first_name: "Bob", last_name: "Wills", password: "foobarbaz", password_confirmation: "foobarbaz")
+		addresses = %w[user@foobarbaz.com user_@foobarbaz.com _user@foobarbaz.com user@foobarbaz.org user@foobarbaz.it user@foobarbaz.gov]
 		addresses.each do |valid_address|
 			customer.email = valid_address
 			expect(customer).to be_valid
@@ -84,6 +84,10 @@ describe Customer do
 		end
 	end
 
+	describe "with a password that is too short" do
+		before{ @customer.password = "a" * 5 }
+		it { should_not be_valid }
+	end
 
 
 end
