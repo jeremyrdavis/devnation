@@ -1,4 +1,4 @@
-require 'spec_helper'
+       require 'spec_helper'
 
 describe Customer do
 
@@ -20,6 +20,26 @@ describe Customer do
 	it "should not be valid without last_name" do
 		Customer.new(first_name: "Bob", email: "bob@texasplayboys").should_not be_valid
 	end
+
+	# check for email validity
+	it "should contain a valid email address" do
+		customer = Customer.new(first_name: "Bob", last_name: "Wills")
+		addresses = %w[user@foo,com user_at_foo.com foo.com user@ user@foo user@foo_bar.com user@foo+bar.com]
+		addresses.each do |invalid_address|
+			customer.email = invalid_address
+			expect(customer).not_to be_valid
+		end
+	end
+
+	it "should be valid when the email address is valid" do
+		customer = Customer.new(first_name: "Bob", last_name: "Wills")
+		addresses = %w[user@foo.com user_@foo.com _user@foo.com user@foo.org user@foo.it user@foo.gov]
+		addresses.each do |valid_address|
+			customer.email = valid_address
+			expect(customer).to be_valid
+		end
+	end
+
 
 	describe "should not be valid when email address is already taken" do
 		before do
