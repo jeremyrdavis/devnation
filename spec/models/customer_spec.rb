@@ -62,7 +62,7 @@ describe Customer do
 	end
 
 	describe "email should always be downcased before save" do
-		customer2 = Customer.new(first_name: "Eldon", last_name: "Shamblin", email: "eldon@TEXASPLAYBOYS.COM").save
+		customer2 = Customer.new(first_name: "Eldon", last_name: "Shamblin", email: "eldon@TEXASPLAYBOYS.COM", password: "foobarbaz", password_confirmation: "foobarbaz").save
 		c3 = Customer.find_by_first_name("Eldon")
 		c3.email.should == "eldon@texasplayboys.com"
 	end
