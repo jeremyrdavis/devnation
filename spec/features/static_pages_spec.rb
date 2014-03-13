@@ -8,7 +8,7 @@ describe "Static Pages" do
 
       before { visit root_path }
 
-  		it { should  have_title("DevNation Bank") }
+  		it { should  have_title(full_title('')) }
       it { should_not have_title(' | Home') }
   		it { should have_content('DevNation') }
   end
