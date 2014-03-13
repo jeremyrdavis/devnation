@@ -2,22 +2,15 @@ require 'spec_helper'
 
 describe "Static Pages" do
 
+    subject { page }
+
   	describe "Home page" do
 
-  		it "should have the title 'DevNation Bank'" do
-  			visit root_path
-  			expect(page).to have_title("DevNation Bank")
-  		end
+      before { visit root_path }
 
-      it "should not have a custom page title" do
-        visit root_path
-        expect(page).not_to have_title('| Home')
-      end
-
-  		it "should have the content 'DevNation'" do
-  			visit root_path
-  			expect(page).to have_content('DevNation')
-  		end
+  		it { should  have_title("DevNation Bank") }
+      it { should_not have_title(' | Home') }
+  		it { should have_content('DevNation') }
   end
 
   describe "Help page" do
