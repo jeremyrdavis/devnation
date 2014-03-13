@@ -15,43 +15,28 @@ describe "Static Pages" do
 
   describe "Help page" do
 
-    it "should have the content 'Help'" do
-      visit help_path
-      expect(page).to have_content('Help')
-    end
+    before { visit help_path }
 
-      it "should have the title 'DevNation Bank | Help'" do
-        visit help_path
-        expect(page).to have_title("DevNation Bank | Help")
-      end
+    it { should have_content('Help') }
+    it { should have_title('DevNation Bank | Help') }
 
   end
 
   describe "About page" do
 
-    it "should have the content 'About DevNation Bank'" do
-      visit about_path
-      expect(page).to have_content('About DevNation Bank')
-    end
+    before { visit about_path }
 
-    it "should have the title 'DevNation Bank | About Us'" do
-      visit about_path
-      expect(page).to have_title("DevNation Bank | About Us")
-    end
+    it { should have_content('About DevNation Bank') }
+    it { should have_title('DevNation Bank | About Us') }
 
   end
 
   describe "Contact page" do
     
-    it "should have the content, 'Contatct Us'" do
-      visit contact_path
-      expect(page).to have_content('Contact DevNation Bank')
-    end
+    before { visit contact_path }
 
-    it "should have the title 'DevNation Bank'" do
-      visit contact_path
-      expect(page).to have_title("DevNation Bank | Contact Us")
-    end
+    it { should have_content('Contact DevNation Bank') }
+    it { should have_title('DevNation Bank | Contact Us') }
 
   end
 
