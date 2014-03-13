@@ -3,6 +3,8 @@ Devnation::Application.routes.draw do
   match '/about',  to: 'static_pages#about',  via: 'get'
   match '/contact',  to: 'static_pages#contact',  via: 'get'
   match '/help',  to: 'static_pages#help',  via: 'get'
+  match '/signup',  to: 'customers#new',  via: 'get'
+
 
   
   resources :accounts
