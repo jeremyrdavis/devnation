@@ -31,6 +31,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
+        flash[:success] = "Welcome to DevNation Bank, #{@customer.first_name}!"
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }
       else
