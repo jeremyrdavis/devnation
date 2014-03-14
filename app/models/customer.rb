@@ -11,4 +11,8 @@ class Customer < ActiveRecord::Base
   	has_secure_password
 	has_many :accounts
 	validates :password, length: { minimum: 6 }
+
+	def name
+		return "#{first_name} #{last_name}"
+	end
 end
