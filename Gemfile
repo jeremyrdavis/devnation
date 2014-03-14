@@ -17,6 +17,8 @@ group :test do
 	gem 'selenium-webdriver', '2.35.1'
 	gem 'growl', '1.0.3'
 	gem 'factory_girl_rails', '4.2.1'
+	gem 'webrat', '0.7.0'
+	gem 'launchy', '0.3.5'
 end
 
 # Use sqlite3 as the database for Active Record
