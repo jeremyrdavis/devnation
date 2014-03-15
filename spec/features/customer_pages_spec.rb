@@ -37,20 +37,33 @@ describe "CustomerPages" do
     describe "with valid information" do
 
     it "should create a user" do
+        
         lambda do
           visit signup_path
           fill_in "First name",  with: "Bob"
           fill_in "Last name", with: "Mould"
-          fill_in "Email", with: "bob@blacksheetsofrain.com"
+          fill_in "Email", with: "bob@huskerdu.com"
           fill_in "Gender", with: "Male"
           fill_in "Password", with: "Foobarbaz"
           fill_in "Confirm Password", with: "Foobarbaz"
           click_button submit
         end.should change(Customer, :count).by(1)
       end
-
     end
 
+    it "should have a welcome message after signup" do
+
+          visit signup_path
+          fill_in "First name",  with: "Grant"
+          fill_in "Last name", with: "Hart"
+          fill_in "Email", with: "grant@huskerdu.com"
+          fill_in "Gender", with: "Male"
+          fill_in "Password", with: "Foobarbaz"
+          fill_in "Confirm Password", with: "Foobarbaz"
+          click_button submit
+          expect(page).to have_content("Welcome to DevNation Bank, Grant!")
+
+    end
 
 
   end
