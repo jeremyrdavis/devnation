@@ -53,4 +53,7 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' },
 end
 
 guard 'rspec', all_after_pass: true, cli: '--drb' do
+
+notification :growl
+
 end
