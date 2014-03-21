@@ -24,6 +24,21 @@ describe "Authentication" do
 		  it { should_not have_selector('div.alert.alert-error') }
 		end
 
+		describe "with valid information" do
+
+			let(:customer) { FactoryGirl.create(:customer) }
+
+			before do
+				fill_in "Email",	with: customer.email
+				fill_in "Password",	with: customer.password
+				click_button "Sign in"
+			end
+
+			it { should have_title(customer.name)}
+			#it { should have_link('Profile',     href: user_path(user)) }
+			#it { should have_link('Sign out',    href: signout_path) }
+			#it { should_not have_link('Sign in', href: signin_path) }
+		end
 
   end
 end
