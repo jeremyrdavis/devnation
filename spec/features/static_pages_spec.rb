@@ -19,6 +19,7 @@ describe "Static Pages" do
 
     it { should have_content('Help') }
     it { should have_title('DevNation Bank | Help') }
+    it { should have_link('Home') }
 
   end
 
@@ -28,6 +29,7 @@ describe "Static Pages" do
 
     it { should have_content('About DevNation Bank') }
     it { should have_title('DevNation Bank | About Us') }
+    it { should have_link('Home') }
 
   end
 
@@ -37,6 +39,7 @@ describe "Static Pages" do
 
     it { should have_content('Contact DevNation Bank') }
     it { should have_title('DevNation Bank | Contact Us') }
+    it { should have_link('Home') }
 
   end
 
