@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
 
   def create
 	customer = Customer.find_by_email(params[:customer][:email])
-		puts customer
 		if customer #&& customer.authenticate(params[:password])
 	    	# Sign the user in and redirect to the user's show page.
 	    	#sign_in customer
 	    	session[:customer_id] = customer.id
+	    	self.current_customer = customer
 	    	redirect_to customer
 		else
 	    	# Create an error message and re-render the signin form.

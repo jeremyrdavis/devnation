@@ -11,6 +11,7 @@ describe "Static Pages" do
   		it { should  have_title(full_title('')) }
       it { should_not have_title(' | Home') }
   		it { should have_content('DevNation') }
+      it { should have_link('Sign In') }
   end
 
   describe "Help page" do
