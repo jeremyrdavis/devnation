@@ -4,14 +4,17 @@ describe CheckingAccount do
 
 	# create a Customer for the CheckingAccount
 	let(:customer) { FactoryGirl.create(:customer) }
+	before { 
+		@checking_account = customer.checking_accounts.build(balance: 1000)
+		@checking_account.save
+	}
 
-	before { @checking_account = Customer.checking_account.build(balance: 1000)  }
 
 	subject { @checking_account }
 
 	it { should respond_to(:balance) }
 	it { should respond_to(:customer) }
-	its(:customer) { should eq :customer }
+	its(:customer) { should eq customer }
 	it { should respond_to(:account_number) }
 
 	describe "without a customer_id" do

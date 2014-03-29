@@ -1,3 +1,5 @@
+require 'bigdecimal'
+
 FactoryGirl.define do
 
   factory :customer do
@@ -6,6 +8,20 @@ FactoryGirl.define do
     email "jeremy.davis@redhat.com"
     password "foobar"
     password_confirmation "foobar"
+
+	  factory :customer_with_checking_account do
+	  	after_create do |customer| 
+        customer.checking_accounts.create(account_number: "DVNCA1234567", balance: BigDecimal.new("1500"))
+	  	end
+	  end
   end
+
+
+  factory :checking_account do
+  	account_number "DVNCA1234567"
+  	balance BigDecimal.new(1500)
+  end
+
+
 
 end

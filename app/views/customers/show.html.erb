@@ -18,6 +18,11 @@
   <%= @customer.gender %>
 </p>
 
+<%= form_tag do %>
+	<%= hidden_field_tag(:customer_id, @customer.id) %>
+	<%= submit_tag("Add Checking Account", class: "btn btn-large btn-primary") %>
+<% end %>
+
 <h2>Accounts</h2>
 <% if @customer.checking_accounts.any? %>
 

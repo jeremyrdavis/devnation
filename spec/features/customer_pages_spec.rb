@@ -75,6 +75,7 @@ describe "CustomerPages" do
   	it { should have_content(customer.first_name) }
   	it { should have_content(customer.last_name) }
     it { should have_content('Accounts') }
+    it { should have_button('Add Checking Account')}
   end
 
 end
