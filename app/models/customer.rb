@@ -10,6 +10,7 @@ class Customer < ActiveRecord::Base
 
   	has_secure_password
 	has_many :accounts
+	has_many :checking_accounts
 	validates :password, length: { minimum: 6 }
 
 	def name

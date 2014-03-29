@@ -4,6 +4,7 @@ CheckingAccount
 id
 balance
 
+
 -- do multiple table inheritance for the CheckingAccount object
 
 Transaction

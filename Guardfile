@@ -56,6 +56,6 @@ end
 
 guard 'rspec', all_after_pass: true, cli: '--drb' do
 
-notification :growl, :sticky => true, :host => '192.168.1.87'
+notification :growl, :sticky => true #, :host => '192.168.1.87', :password => 'growl'
 
 end
