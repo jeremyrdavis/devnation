@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20140329124527) do
     t.datetime "updated_at"
   end
 
+  add_index "checking_accounts", ["customer_id"], name: "index_checking_accounts_on_customer_id"
+
   create_table "customers", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"

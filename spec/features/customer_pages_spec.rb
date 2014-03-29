@@ -74,6 +74,7 @@ describe "CustomerPages" do
   	before { visit customer_path( customer ) }
   	it { should have_content(customer.first_name) }
   	it { should have_content(customer.last_name) }
+    it { should have_content('Accounts') }
   end
 
 end

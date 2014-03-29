@@ -1,5 +1,5 @@
 class AddCustomerIndexToCheckingAccount < ActiveRecord::Migration
   def change
-  	add_index :checking_account, [:customer_id]
+  	add_index :checking_accounts, [:customer_id]
   end
 end

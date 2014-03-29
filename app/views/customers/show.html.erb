@@ -2,6 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
+<h2>Personal</h2>
 <p>
   <strong>Name:</strong>
   <%= @customer.first_name %>   <%= @customer.last_name %>
@@ -16,6 +17,12 @@
   <strong>Gender:</strong>
   <%= @customer.gender %>
 </p>
+
+<h2>Accounts</h2>
+<% if @customer.checking_accounts.any? %>
+
+	<h3><% @customer.checking_accounts.count %> Checking <% pluralize(@customer.checking_accounts, 'Account') %></h3>
+<% end %>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Back', customers_path %>
