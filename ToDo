@@ -1,0 +1,13 @@
+Checking Accounts
+
+CheckingAccount
+id
+balance
+
+-- do multiple table inheritance for the CheckingAccount object
+
+Transaction
+id
+payee_account_id
+payor_account_id
+type = debit|credit
