@@ -27,6 +27,11 @@
 <% if @customer.checking_accounts.any? %>
 
 	<h3><% @customer.checking_accounts.count %> Checking <% pluralize(@customer.checking_accounts, 'Account') %></h3>
+    <% @customer.checking_accounts.each do |account| %>
+		<p><strong>Account Number:</strong><%= account.account_number %></p>
+		<p><strong>Balance:</strong><%= account.balance %></p>
+    <% end %>
+
 <% end %>
 
 <%= link_to 'Edit', edit_customer_path(@customer) %> |

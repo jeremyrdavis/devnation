@@ -78,4 +78,15 @@ describe "CustomerPages" do
     it { should have_button('Add Checking Account')}
   end
 
+  describe "Proifle Page with a CheckingAccount" do
+    let(:customer) { FactoryGirl.create(:customer_with_checking_account) }
+    before { visit customer_path( customer ) }
+    it { should have_content(customer.first_name) }
+    it { should have_content(customer.last_name) }
+    it { should have_content('Accounts') }
+    it { should have_button('Add Checking Account')}
+    it { should have_content('Balance')}
+  end
+
+
 end

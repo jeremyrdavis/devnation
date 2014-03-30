@@ -26,6 +26,8 @@ Spork.prefork do
     config.include FactoryGirl::Syntax::Methods
     config.include Capybara::DSL, :type => :feature
 
+    # Allow for individual tests
+
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -52,6 +54,7 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
   end
 
 end

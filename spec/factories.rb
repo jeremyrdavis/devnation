@@ -5,15 +5,15 @@ FactoryGirl.define do
   factory :customer do
     first_name "Jeremy"
     last_name "Davis"
-    email "jeremy.davis@redhat.com"
+    email "jeremy.davis" + Random.rand(1234).to_s + "@redhat.com"
     password "redhat-14"
     password_confirmation "redhat-14"
 
 	  factory :customer_with_checking_account do
-	  	after_create do |customer| 
-        customer.checking_accounts.create(account_number: "DVNCA1234567", balance: BigDecimal.new("1500"))
+	  	after(:create) { |customer| 
+        customer.checking_accounts.create(balance:1500, account_number: "DVN1234567")
+      }
 	  	end
-	  end
   end
 
 
