@@ -6,8 +6,8 @@ FactoryGirl.define do
     first_name "Jeremy"
     last_name "Davis"
     email "jeremy.davis@redhat.com"
-    password "foobar"
-    password_confirmation "foobar"
+    password "redhat-14"
+    password_confirmation "redhat-14"
 
 	  factory :customer_with_checking_account do
 	  	after_create do |customer| 

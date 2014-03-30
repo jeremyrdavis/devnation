@@ -44,8 +44,8 @@ describe "CustomerPages" do
           fill_in "Last name", with: "Mould"
           fill_in "Email", with: "bob@huskerdu.com"
           fill_in "Gender", with: "Male"
-          fill_in "Password", with: "Foobarbaz"
-          fill_in "Confirm Password", with: "Foobarbaz"
+          fill_in "Password", with: "redhat-14"
+          fill_in "Confirm Password", with: "redhat-14"
           click_button submit
         end.should change(Customer, :count).by(1)
       end
@@ -58,8 +58,8 @@ describe "CustomerPages" do
           fill_in "Last name", with: "Hart"
           fill_in "Email", with: "grant@huskerdu.com"
           fill_in "Gender", with: "Male"
-          fill_in "Password", with: "Foobarbaz"
-          fill_in "Confirm Password", with: "Foobarbaz"
+          fill_in "Password", with: "redhat-14"
+          fill_in "Confirm Password", with: "redhat-14"
           click_button submit
           expect(page).to have_content("Welcome to DevNation Bank, Grant!")
 
