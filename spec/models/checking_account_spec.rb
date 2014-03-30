@@ -16,6 +16,7 @@ describe CheckingAccount do
 	it { should respond_to(:customer) }
 	its(:customer) { should eq customer }
 	it { should respond_to(:account_number) }
+	its(:account_number) { should_not be_nil }
 
 	describe "without a customer_id" do
 		before { @checking_account.customer_id = nil }
