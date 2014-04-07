@@ -19,7 +19,8 @@ class CheckingAccountsController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    @checking_account = CheckingAccount.find(params[:id])
   end
   
 

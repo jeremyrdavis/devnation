@@ -20,7 +20,8 @@
 
 <%= form_tag("/checking_accounts", method: "post") do %>
 	<%= hidden_field_tag(:customer_id, @customer.id) %>
-	<%= submit_tag(name: "add_checking_account", value: "Add Checking Account", class: "btn btn-large btn-primary")	 %>
+	<%= submit_tag "Add Checking Account", class: "btn btn-large btn-primary", name: "add_checking_account"	 %>
+  <!-- , :name: "add_checking_account", :class: "btn btn-large btn-primary" -->
 <% end %>
 
 <h2>Accounts</h2>
@@ -30,6 +31,7 @@
     <% @customer.checking_accounts.each do |account| %>
 		<p><strong>Account Number:</strong><%= account.account_number %></p>
 		<p><strong>Balance:</strong><%= account.balance %></p>
+    <p><%= link_to 'Edit Account', edit_checking_account_path(account) %></p>
     <% end %>
 
 <% end %>

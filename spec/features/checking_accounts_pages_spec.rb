@@ -6,7 +6,7 @@ describe "CheckingAccountsPages" do
 	subject{ page }
 	
 	# Create a customer for the tests
-	before { @customer = FactoryGirl.create(:customer)}
+	before { @customer = FactoryGirl.create(:customer_with_checking_account)}
 
 	# Creating a CheckingAccount doesn't have an actual page.  The CheckingAccountsController
 	# creates the account and forwards back to the originating Customer page
@@ -27,11 +27,12 @@ describe "CheckingAccountsPages" do
 
     end
 
-#    describe "should show current balance" do
-#		# Create a customer for the tests
-#		before { @customer = FactoryGirl.create(:customer_with_checking_account)}
-#		vist checking_account_path( @customer.checking_accounts(0) )
-#		expect(page).to have_content("Balance:")
-#   end
+	it "CheckingAccount should be editable" do
+
+		visit customer_path(@customer)
+		click_link 'Edit Account'
+		expect(page).to have_content("Editing Account")
+	end
+
 
 end

@@ -2,5 +2,9 @@ Checking Accounts
 
 Add the create CheckingAccounts stuff
 Make sure unvalidated user gets redirected to sign in
+The default balance should be 0 not nil
+
+
+
 
 

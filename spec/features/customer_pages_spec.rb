@@ -86,6 +86,7 @@ describe "CustomerPages" do
     it { should have_content('Accounts') }
     it { should have_button('Add Checking Account')}
     it { should have_content('Balance')}
+    it { should have_link('Edit Account')}
   end
 
 
