@@ -1,0 +1,21 @@
+<%= form_for(@checking_account) do |f| %>
+  <% if @checking_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checking_account.errors.count, "error") %> prohibited the changes from being saved :
+
+      <ul>
+      <% @checking_account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :balance %><br>
+    <%= f.text_field :balance %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

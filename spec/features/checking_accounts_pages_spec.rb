@@ -34,5 +34,4 @@ describe "CheckingAccountsPages" do
 		expect(page).to have_content("Editing Account")
 	end
 
-
 end
