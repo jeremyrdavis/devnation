@@ -27,4 +27,11 @@ describe "CheckingAccountsPages" do
 
     end
 
+#    describe "should show current balance" do
+#		# Create a customer for the tests
+#		before { @customer = FactoryGirl.create(:customer_with_checking_account)}
+#		vist checking_account_path( @customer.checking_accounts(0) )
+#		expect(page).to have_content("Balance:")
+#   end
+
 end

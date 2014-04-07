@@ -10,8 +10,9 @@ FactoryGirl.define do
     password_confirmation "redhat-14"
 
 	  factory :customer_with_checking_account do
+      account_number = Random.rand(12345678)
 	  	after(:create) { |customer| 
-        customer.checking_accounts.create(balance:1500, account_number: "DVN1234567")
+        customer.checking_accounts.create(balance:1500)
       }
 	  	end
   end
