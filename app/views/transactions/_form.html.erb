@@ -23,11 +23,7 @@
     <%= f.label :amount %><br>
     <%= f.text_field :amount %>
   </div>
-  <div class="field">
-    <%= f.label :timestamp %><br>
-    <%= f.datetime_select :timestamp %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Transaction", class: "btn btn-large btn-primary" %>
   </div>
 <% end %>
