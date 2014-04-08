@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329124527) do
+ActiveRecord::Schema.define(version: 20140408012823) do
 
   create_table "accounts", force: true do |t|
     t.integer  "customer_id"
@@ -42,5 +42,14 @@ ActiveRecord::Schema.define(version: 20140329124527) do
   end
 
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true
+
+  create_table "transactions", force: true do |t|
+    t.string   "from_account_id"
+    t.string   "to_account_id"
+    t.decimal  "amount"
+    t.datetime "timestamp"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
