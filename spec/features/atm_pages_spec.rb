@@ -7,7 +7,7 @@ describe "ATM" do
 	describe "page should display form correctly" do
 
 		before do
-			visit atm_path
+			visit("/atm")
 		end
 
 		it { should have_title("DevNation Bank ATM") }
