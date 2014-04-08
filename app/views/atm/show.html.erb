@@ -7,3 +7,15 @@
 <% else %>
 <h1>Select Account</h1>
 <% end %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:transaction, url: {controller: "transactions", action: "create"} ) do |f| %>
+
+      <%= f.label :amount %>
+      <%= f.text_field :amount %>
+
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

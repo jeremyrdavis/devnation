@@ -13,3 +13,4 @@ def sign_customer_in(customer)
 	fill_in "Password",	with: customer.password
 	click_button "Sign in"
 end
+
