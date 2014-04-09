@@ -6,7 +6,6 @@
       <th>From account</th>
       <th>To account</th>
       <th>Amount</th>
-      <th>Timestamp</th>
       <th></th>
       <th></th>
       <th></th>
@@ -19,7 +18,6 @@
         <td><%= transaction.from_account_id %></td>
         <td><%= transaction.to_account_id %></td>
         <td><%= transaction.amount %></td>
-        <td><%= transaction.timestamp %></td>
         <td><%= link_to 'Show', transaction %></td>
         <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
