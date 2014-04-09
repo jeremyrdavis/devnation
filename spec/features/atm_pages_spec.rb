@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "ATM" do
 
 	subject { page }
-	@customer = FactoryGirl.create(:customer)
+	@customer = FactoryGirl.build(:customer, email: "jeremy.davis@redhat.com")
 
 	describe "page should display form correctly" do
 
@@ -12,22 +12,34 @@ describe "ATM" do
 		end
 
 		it { should have_title("DevNation Bank ATM") }
-		it { should have_content("Amount") }
-		it { should have_content("Withdrawl") }
-		it { should have_content("Deposit") }
-		it { should have_content("Submit") }
+		it { should have_field("Amount") }
+		it { should have_field("Withdrawl") }
+		it { should have_field("Deposit") }
+		it { should have_button("Submit") }
 
 	end
 
+
+end
+
+describe "ATM when logged in" do
+
+	subject { page }
+	
 	describe "page should display customer's name when accessed by a logged in customer" do
 
 		before do
-			signin_customer(@customer)
+			@customer = FactoryGirl.build(:customer, email: "jeremy.davis@redhat.com")
+			sign_customer_in(@customer)
 			visit("/atm")
-			it { should have_content("#{customer.name}") }
-
 		end
 
+		it { should have_content("#{@customer.name}") }
+		it { should have_field("Amount") }
+		it { should have_field("Withdrawl") }
+		it { should have_field("Deposit") }
+		it { should have_button("Submit") }
 	end
-
 end
+
+

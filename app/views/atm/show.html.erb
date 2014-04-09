@@ -1,7 +1,5 @@
 <% provide(:title, 'DevNation Bank ATM') %>
 
-<h1>Atm#show</h1>
-<p>Find me in app/views/atm/show.html.erb</p>
 <% if @customer %>
 <h1><%= @customer.name %></h1>
 <% else %>
@@ -11,9 +9,13 @@
   <div class="span6 offset3">
     <%= form_for(:transaction, url: {controller: "transactions", action: "create"} ) do |f| %>
 
+      <label for="withdrawl" >Withdrawl</label>
+      <input type="radio" id="withdrawl" name="transaction_type" value="withdrawl" checked="checked" />
+      <label for="deposit" >Deposit</label>
+      <input type="radio" id="deposit" name="transaction_type" value="deposit" />
       <%= f.label :amount %>
       <%= f.text_field :amount %>
-
+      <br/>
       <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
 
