@@ -42,4 +42,20 @@ describe "ATM when logged in" do
 	end
 end
 
+describe "ATM withdrawl should increment transactions" do
+
+		before do
+			@customer = FactoryGirl.build(:customer, email: "jeremy.davis@redhat.com")
+			sign_customer_in(@customer)
+			visit("/atm")
+			fill_in("Amount", with: "100")
+			choose("Withdrawl")
+		end
+
+        it { expect { click_button "Submit"}.to change(Transaction, :count) }
+
+
+end
+
+
 
