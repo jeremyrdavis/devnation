@@ -7,16 +7,16 @@
 <% end %>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(:transaction, url: {controller: "transactions", action: "create"} ) do |f| %>
+    <%= form_for(:transaction, url: {controller: "atm", action: "create"} ) do |f| %>
 
-      <label for="withdrawl" >Withdrawl</label>
-      <input type="radio" id="withdrawl" name="transaction_type" value="withdrawl" checked="checked" />
-      <label for="deposit" >Deposit</label>
-      <input type="radio" id="deposit" name="transaction_type	" value="deposit" />
+      <%= f.label :transaction_type_withdrawl, "Withdrawl" %>
+      <%= f.radio_button(:transaction_type, "withdrawl", :checked => true) %>
+      <%= f.label :transaction_type, "Deposit" %>
+      <%= f.radio_button(:transaction_type_deposit, "deposit") %>
       <%= f.label :amount %>
       <%= f.text_field :amount %>
       <br/>
-      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+      <%= f.submit(value: "Submit", class: "btn btn-large btn-primary") %>
     <% end %>
 
   </div>

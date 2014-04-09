@@ -9,6 +9,7 @@
   match '/signup',  to: 'customers#new',  via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/atm/transaction', to: 'atm#create', via: 'post'
 
   resources :accounts
   resources :customers

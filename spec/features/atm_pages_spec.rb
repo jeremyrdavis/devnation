@@ -13,8 +13,8 @@ describe "ATM" do
 
 		it { should have_title("DevNation Bank ATM") }
 		it { should have_field("Amount") }
-		it { should have_field("Withdrawl") }
-		it { should have_field("Deposit") }
+		it { should have_content("Withdrawl") }
+		it { should have_content("Deposit") }
 		it { should have_button("Submit") }
 
 	end
@@ -36,8 +36,8 @@ describe "ATM when logged in" do
 
 		it { should have_content("#{@customer.name}") }
 		it { should have_field("Amount") }
-		it { should have_field("Withdrawl") }
-		it { should have_field("Deposit") }
+		it { should have_content("Withdrawl") }
+		it { should have_content("Deposit") }
 		it { should have_button("Submit") }
 	end
 end
@@ -52,7 +52,7 @@ describe "ATM withdrawl should increment transactions" do
 			choose("Withdrawl")
 		end
 
-        it { expect { click_button "Submit"}.to change(Transaction, :count) }
+        it { expect { click_button("Submit") }.to change(Transaction, :count) }
 
 
 end

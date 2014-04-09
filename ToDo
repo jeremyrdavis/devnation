@@ -1,10 +1,11 @@
-Checking Accounts
-
-Add the create CheckingAccounts stuff
-Make sure unvalidated user gets redirected to sign in
-The default balance should be 0 not nil
+NEXT
+add the to and from values in the ATM controller
+add a transaction_type column to Transactions
 
 
+SOME POINT
+fix the display of the decimals
+fix layouts
 
 
 
