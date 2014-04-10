@@ -35,10 +35,15 @@ describe "CheckingAccountsPages" do
 
 	it "should be able to make a deposit" do
 		visit customer_path(@customer)
-		click_link("#{@customer.checking_accounts[0].id}_actions")
+		checking_account = @customer.checking_accounts[0]
+		click_link("#{checking_account.id}_actions")
 		options = {:with => "500"}
 		fill_in("deposit_amount", options)
 		expect { click_button "Make Deposit"}.to change(Transaction, :count)
+		transaction = Transaction.last
+		expect { transaction.to_account.to eq checking_accounts.account_number}
+		expect { transaction.amount.to eq 500}
+		expect { transaction.transaction_type.to eq "deposit"}
 	end
 
 end
