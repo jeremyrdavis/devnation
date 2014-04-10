@@ -1,4 +1,11 @@
 NEXT
+Change checking_account/edit to add a payment to another account and make a deposit
+Convert to JRuby
+Get Torquebox installed into EAP
+Get app running on Torquebox
+Create JMS ATM App
+Wire JMS ATM into Rails app
+
 Add tests for ATM controller
 Add a test for CheckingAccount/Transaction functionality
 Add in "administrative" transaction page
