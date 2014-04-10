@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :transaction_type_deposit, "Deposit" %>
+    <%= f.radio_button(:transaction_type, "deposit") %>
+  </div>
+  <div class="field">
+    <%= f.label :transaction_type_withdrawl, "Withdrawl" %>
+    <%= f.radio_button(:transaction_type, "withdrawl", :checked => true) %>
+  </div>
+  <div class="field">
     <%= f.label :from_account_id %><br>
     <%= f.text_field :from_account_id %>
   </div>
@@ -24,6 +32,6 @@
     <%= f.text_field :amount %>
   </div>
   <div class="actions">
-    <%= f.submit "Create Transaction", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Create Transaction", class: "btn btn-primary" %>
   </div>
 <% end %>
