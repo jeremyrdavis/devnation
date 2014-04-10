@@ -1,6 +1,7 @@
 NEXT
 Add tests for ATM controller
 Add in "administrative" transaction page
+Add the specific relationship between Transactiona and Account
 
 SOME POINT
 fix the display of the decimals
