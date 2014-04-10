@@ -20,7 +20,7 @@
 
 <%= form_tag("/checking_accounts", method: "post") do %>
 	<%= hidden_field_tag(:customer_id, @customer.id) %>
-	<%= submit_tag "Add Checking Account", class: "btn btn-large btn-primary", name: "add_checking_account"	 %>
+	<%= submit_tag "Add Checking Account", class: "btn", name: "add_checking_account"	 %>
   <!-- , :name: "add_checking_account", :class: "btn btn-large btn-primary" -->
 <% end %>
 
