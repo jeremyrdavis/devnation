@@ -1,5 +1,6 @@
 NEXT
-
+Add tests for ATM controller
+Add in "administrative" transaction page
 
 SOME POINT
 fix the display of the decimals
