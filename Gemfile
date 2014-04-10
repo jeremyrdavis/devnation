@@ -16,6 +16,7 @@ end
 group :test do
 	gem 'capybara', '2.1.0'
 	gem 'selenium-webdriver', '2.35.1'
+	gem 'faker', '1.0.1'
 	gem 'growl', '1.0.3'
 	gem 'webrat', '0.7.0'
 	gem 'launchy', '0.3.5'

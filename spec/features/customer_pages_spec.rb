@@ -70,24 +70,26 @@ describe "CustomerPages" do
 
   describe "Profile Page" do
 
-  	let(:customer) { FactoryGirl.create(:customer) }
-  	before { visit customer_path( customer ) }
-  	it { should have_content(customer.first_name) }
-  	it { should have_content(customer.last_name) }
-    it { should have_content('Accounts') }
-    it { should have_button('Add Checking Account')}
-  end
+    describe "customer with no accounts" do
 
-  describe "Proifle Page with a CheckingAccount" do
-    let(:customer) { FactoryGirl.create(:customer_with_checking_account) }
-    before { visit customer_path( customer ) }
-    it { should have_content(customer.first_name) }
-    it { should have_content(customer.last_name) }
-    it { should have_content('Accounts') }
-    it { should have_button('Add Checking Account')}
-    it { should have_content('Balance')}
-    it { should have_link('Edit Account')}
-  end
+    	let(:customer) { FactoryGirl.create(:customer) }
+    	before { visit customer_path( customer ) }
+    	it { should have_content(customer.first_name) }
+    	it { should have_content(customer.last_name) }
+      it { should have_content('Accounts') }
+      it { should have_button('Add Checking Account')}
+    end
 
+    describe "customer with a CheckingAccount" do
+      let(:customer) { FactoryGirl.create(:customer_with_checking_account) }
+      before { visit customer_path( customer ) }
+      it { should have_content(customer.first_name) }
+      it { should have_content(customer.last_name) }
+      it { should have_content('Accounts') }
+      it { should have_button('Add Checking Account')}
+      it { should have_content('Balance')}
+      it { should have_link('Account Actions')}
+    end
+  end
 
 end

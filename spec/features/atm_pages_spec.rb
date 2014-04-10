@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "ATM" do
 
 	subject { page }
-	@customer = FactoryGirl.build(:customer, email: "jeremy.davis@redhat.com")
 
 	describe "page should display form correctly" do
 
@@ -29,7 +28,7 @@ describe "ATM when logged in" do
 	describe "page should display customer's name when accessed by a logged in customer" do
 
 		before do
-			@customer = FactoryGirl.build(:customer, email: "jeremy.davis@redhat.com")
+			@customer = FactoryGirl.create(:customer_with_checking_account)
 			sign_customer_in(@customer)
 			visit("/atm")
 		end
@@ -45,7 +44,7 @@ end
 describe "ATM withdrawl should increment transactions" do
 
 		before do
-			@customer = FactoryGirl.build(:customer, email: "jeremy.davis@redhat.com")
+			@customer = FactoryGirl.create(:customer_with_checking_account)
 			sign_customer_in(@customer)
 			visit("/atm")
 			fill_in("Amount", with: "100")
