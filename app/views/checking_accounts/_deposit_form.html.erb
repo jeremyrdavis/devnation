@@ -16,8 +16,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+    <%= f.label :amount, "Deposit Amount" %><br>
+    <%= f.text_field :amount, id: "deposit_amount" %>
   </div>
   <div class="actions">
     <%= f.submit "Make Deposit", class: "btn" %>

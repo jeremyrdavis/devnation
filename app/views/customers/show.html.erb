@@ -31,7 +31,7 @@
     <% @customer.checking_accounts.each do |account| %>
 		<p><strong>Account Number:</strong><%= account.account_number %></p>
 		<p><strong>Balance:</strong><%= account.balance %></p>
-    <p><%= link_to 'Account Actions', edit_checking_account_path(account), class: "btn" %></p>
+    <p><%= link_to 'Account Actions', edit_checking_account_path(account), class: "btn", id: "#{account.id}_actions" %></p>
     <% end %>
 
 <% end %>
