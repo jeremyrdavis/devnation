@@ -1,7 +1,12 @@
 <% provide(:title, @checking_account.account_number) %>
-<h1>Editing Account <%= @checking_account.account_number %></h1>
+<h1>Account <%= @checking_account.account_number %></h1>
 
+<%= render 'deposit_form' %>
+<br/>
+<%= render 'payment_form' %>
+<br/>
 <%= render 'form' %>
+<br/>
 
 <%= link_to 'Show', @checking_account %> |
 <%= link_to 'Back', checking_accounts_path %>

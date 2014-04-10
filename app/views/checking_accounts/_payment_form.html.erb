@@ -1,0 +1,29 @@
+<h1>Make Payment</h1>
+<%= form_for(@transaction) do |f| %>
+<!-- hidden fields -->
+<%= f.hidden_field(:transaction_type, value: "payment") %>
+<%= f.hidden_field(:from_account, value: @checking_account) %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% @transaction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :to_account_id %><br>
+    <%= f.text_field :to_account_id %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Make Payment", class: "btn" %>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
-<h1>Adjust Balance</h1>
+<h1>Make Deposit</h1>
 <%= form_for(@checking_account) do |f| %>
   <% if @checking_account.errors.any? %>
     <div id="error_explanation">
@@ -17,6 +17,7 @@
     <%= f.text_field :balance %>
   </div>
   <div class="actions">
-    <%= f.submit "Adjust Balance", class: "btn" %>
+    <%= f.submit "Make Deposit", class: "btn" %>
   </div>
 <% end %>
+

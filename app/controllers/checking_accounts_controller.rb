@@ -21,6 +21,7 @@ class CheckingAccountsController < ApplicationController
 
   def edit
     @checking_account = CheckingAccount.find(params[:id])
+    @transaction = Transaction.new
   end
   
 
