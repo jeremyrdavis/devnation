@@ -6,12 +6,15 @@ Get app running on Torquebox
 Create JMS ATM App
 Wire JMS ATM into Rails app
 
+Remove puts showing up during tests
 Add tests for ATM controller
 Add a test for CheckingAccount/Transaction functionality
 Add in "administrative" transaction page
 Wire Transaction into CheckingAccount.balance
 Move ATM to JMS
 Add in Payments
+lock down routes
+move to STI for deposit, payment, etc.
 
 
 SOME POINT

@@ -5,6 +5,7 @@
   match '/about',  to: 'static_pages#about',  via: 'get'
   match '/atm', to: 'atm#show', via: 'get'
   match '/contact',  to: 'static_pages#contact',  via: 'get'
+  match '/checking_accounts/deposit', to: 'checking_accounts#make_deposit', via: 'post'
   match '/help',  to: 'static_pages#help',  via: 'get'
   match '/signup',  to: 'customers#new',  via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
