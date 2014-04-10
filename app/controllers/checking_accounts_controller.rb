@@ -42,6 +42,33 @@ class CheckingAccountsController < ApplicationController
       end
     end
   end
+
+  def make_payment
+    transaction_params = params[:transaction]
+    puts "transaction_params: #{transaction_params}"
+
+    @checking_account = CheckingAccount.find_by_account_number(transaction_params[:from_account])
+    puts "\nController : CheckingAccount: #{@checking_account.inspect}\n"
+    
+    #build Transaction
+    @transaction = Transaction.new
+    @transaction.to_account_id = transaction_params[:to_account_id]
+    @transaction.from_account_id = @checking_account.account_number
+    @transaction.amount = transaction_params[:amount]
+    @transaction.transaction_type = "payment"    
+    puts "\nController : Transaction pre save: #{@transaction.inspect}\n"
+
+    respond_to do |format|
+      if @transaction.save
+        format.html { redirect_to edit_checking_account_path(@checking_account.id), notice: 'Payment was successfully made.  Your account has been debited #{@transaction.amount}' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   
 
 end

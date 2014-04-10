@@ -37,6 +37,7 @@ describe "CheckingAccountsPages" do
 		visit customer_path(@customer)
 		checking_account = @customer.checking_accounts[0]
 		click_link("#{checking_account.id}_actions")
+
 		options = {:with => "500"}
 		fill_in("deposit_amount", options)
 		expect { click_button "Make Deposit"}.to change(Transaction, :count)
@@ -45,5 +46,31 @@ describe "CheckingAccountsPages" do
 		expect { transaction.amount.to eq 500}
 		expect { transaction.transaction_type.to eq "deposit"}
 	end
+
+	it "should be able to make a Payment" do
+
+		pay_to_account = "PTA123456789"
+
+		visit customer_path(@customer)
+		checking_account = @customer.checking_accounts[0]
+		expect { checking_account.to_not be_nil }
+		click_link("#{checking_account.id}_actions")
+		fill_in("payment_amount", with: 500)
+		fill_in("to_account", with: pay_to_account)
+
+#		puts "Transaction: #{transaction.inspect} for #{transaction.amount.to_s}"
+		puts "\nrspec : CheckingAccount : #{checking_account.inspect}\n "
+
+		expect { click_button "Make Payment"}.to change(Transaction, :count)
+		transaction = Transaction.last
+		puts "\nrspec : Transaction post save: #{transaction.inspect} for #{transaction.amount.to_s}\n"
+		expect(transaction.to_account_id).to eq(pay_to_account)
+		expect(transaction.from_account_id).to eq(checking_account.account_number)
+		expect(transaction.amount).to eq 500
+		expect(transaction.transaction_type).to eq "payment"
+		puts "\nrspec : Transaction: #{transaction.inspect} for #{transaction.amount.to_s}\n"
+		puts "\nrspec : CheckingAccount : #{checking_account.inspect}\n"
+	end
+
 
 end
