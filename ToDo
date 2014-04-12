@@ -1,11 +1,24 @@
 NEXT
-Change checking_account/edit to add a payment to another account and make a deposit
+Get two-way JMS going
+
+
+JMS APP
+/Workspace/jms_spike or jeremyrdavis/devnation-jms
+Build in Twitter Bootstrap
+
+RAILS APP
+/Workspace/devnation/devnation or jeremyrdavis/devnation
+
 Convert to JRuby
-Get Torquebox installed into EAP
 Get app running on Torquebox
+
+RULES APP
+/Workspace/devnation/devnation-brms or jeremyrdavis/devnation-rules
+
 Create JMS ATM App
 Wire JMS ATM into Rails app
 
+move to STI for deposit, payment, etc.
 Remove puts showing up during tests
 Add tests for ATM controller
 Add a test for CheckingAccount/Transaction functionality
@@ -14,7 +27,8 @@ Wire Transaction into CheckingAccount.balance
 Move ATM to JMS
 Add in Payments
 lock down routes
-move to STI for deposit, payment, etc.
+
+
 
 
 SOME POINT
