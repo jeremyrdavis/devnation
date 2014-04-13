@@ -11,26 +11,18 @@ class AtmController < ApplicationController
   end
 
   def create
-  	logger.debug { params }
   	transaction_params = params["transaction"]
-  	logger.debug { transaction_params }
 
   	transaction_type = transaction_params["transaction_type"]
   	transaction_amount = transaction_params["amount"]
 
-  	logger.debug { "transaction_type: #{transaction_type}" }
-  	logger.debug { "transaction_amount: #{transaction_amount}" }
-
     @transaction = Transaction.new()
     @transaction.amount = transaction_amount
     @transaction.transaction_type = transaction_type
-    @transaction
-    logger.debug(@transaction)
 
     @customer = view_context.current_customer
     # temporary
     @checking_account = @customer.checking_accounts[0]
-    logger.debug { "CheckingAccount : #{@checking_account.inspect}" }
     
     if(transaction_type == "withdrawl")
     	@transaction.from_account_id = @checking_account.account_number
