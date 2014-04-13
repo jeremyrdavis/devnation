@@ -24,6 +24,10 @@ class CheckingAccountsController < ApplicationController
     @transaction = Transaction.new
   end
 
+  def show
+    @checking_account = CheckingAccount.find(params[:id])
+  end
+
   def make_deposit
     transaction_params = params[:transaction]
     @checking_account = CheckingAccount.find(transaction_params[:to_account])
@@ -93,6 +97,22 @@ class CheckingAccountsController < ApplicationController
     end
   end
 
-  
+  def update
+    @checking_account = CheckingAccount.find(params[:id])
+    puts "params[:balance] : #{params[:balance]}"
+    respond_to do |format|
+      if @checking_account.update_attributes(checking_account_params)
+        format.html { redirect_to @checking_account, notice: 'Customer was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @checking_account.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+    def checking_account_params
+      params.require(:checking_account).permit(:balance)
+    end
 
 end
