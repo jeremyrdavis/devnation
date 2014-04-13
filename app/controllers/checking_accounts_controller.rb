@@ -34,7 +34,7 @@ class CheckingAccountsController < ApplicationController
     puts @transaction.inspect
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to edit_checking_account_path(@checking_account.id), notice: 'Deposit was successfully made.  Your account has been credited #{@transaction.amount}' }
+        format.html { redirect_to edit_checking_account_path(@checking_account.id), notice: "Deposit was successfully made.  Your account has been credited #{@transaction.amount}" }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,7 +60,7 @@ class CheckingAccountsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
-        format.html { redirect_to edit_checking_account_path(@checking_account.id), notice: 'Payment was successfully made.  Your account has been debited #{@transaction.amount}' }
+        format.html { redirect_to edit_checking_account_path(@checking_account.id), notice: "Payment was successfully made.  Your account has been debited #{@transaction.amount}" }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
