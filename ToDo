@@ -1,7 +1,7 @@
 NEXT
 Get Rails app calling Java
 Stub out app with JMS, rules, etc.
-
+Refactor "Transaction" to "AccountChange"
 
 JMS APP
 /Workspace/jms_spike or jeremyrdavis/devnation-jms

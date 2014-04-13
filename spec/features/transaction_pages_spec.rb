@@ -32,23 +32,5 @@ describe "Transactions" do
 
 end
 
-describe "Withdrawls" do
-
-	before { visit("/transactions/new") }
-
-	describe "creating a withdrawl" do
-
-		before do
-			@customer = FactoryGirl.create(:customer_with_checking_account)
-			fill_in("Amount", with: "100")
-			choose("Withdrawl")
-			fill_in("From account", with: @customer.checking_accounts[0].account_number)
-		end
-
-        it { expect { click_button("Create Transaction") }.to change(Transaction, :count) }
-
-
-	end
-end
 
 

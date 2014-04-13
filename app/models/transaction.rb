@@ -7,4 +7,5 @@ class Transaction < ActiveRecord::Base
 	def create_timestamp    
 		@timestamp = DateTime.now  
 	end
+
 end
