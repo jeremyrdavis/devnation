@@ -26,8 +26,10 @@ class AtmController < ApplicationController
     
     if(transaction_type == "withdrawl")
     	@transaction.from_account_id = @checking_account.account_number
-    elsif (transaction_type == "withdrawl")
+      @checking_account.balance -= @transaction.amount
+    elsif (transaction_type == "deposit")
     	@transaction.to_account_id = @checking_account.account_number
+      @checking_account.balance += @transaction.amount
     end
 
     respond_to do |format|

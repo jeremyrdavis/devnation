@@ -10,15 +10,31 @@ describe "ATM" do
         click_button("Sign in")
     }
 
-    it "should update the customer's account balance" do
+    it "a deposit should credit the customer's account balance" do
 
         visit("/atm")
+        choose("Deposit")
         fill_in("Amount", with: "100")
         expect{ click_button("Submit")}.to change(Transaction, :count)
-#        expected_amount = BigDecimal.new(1600)
-#        puts "Expecting #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
-#        @customer.reload
-#        expect(@customer.checking_accounts[0].balance).to eql(expected_amount)
+        expected_amount = BigDecimal.new(1400)
+        puts "Expecting #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
+        @customer.reload
+        puts "Actual #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
+        expect(@customer.checking_accounts[0].balance).to eql(expected_amount)
+
+    end
+
+    it "a withdrawl should debit the customer's account balance" do
+
+        visit("/atm")
+        choose("Withdrawl")
+        fill_in("Amount", with: "100")
+        expect{ click_button("Submit")}.to change(Transaction, :count)
+        expected_amount = BigDecimal.new(1600)
+        puts "Withdrawl Expecting #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
+        @customer.reload
+        puts "Withdrawl Actual #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
+        expect(@customer.checking_accounts[0].balance).to eql(expected_amount)
 
     end
 
