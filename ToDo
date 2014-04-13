@@ -1,5 +1,6 @@
 NEXT
-Get two-way JMS going
+Get Rails app calling Java
+Stub out app with JMS, rules, etc.
 
 
 JMS APP
@@ -8,6 +9,7 @@ Build in Twitter Bootstrap
 
 RAILS APP
 /Workspace/devnation/devnation or jeremyrdavis/devnation
+Create an Alerts controller or check out how to do this via Stomp
 
 Convert to JRuby
 Get app running on Torquebox
