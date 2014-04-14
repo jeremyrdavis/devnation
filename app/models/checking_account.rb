@@ -5,7 +5,10 @@ class CheckingAccount < ActiveRecord::Base
 	validates :customer_id, presence: true
 
 	#always generate a random account number
-	before_save { self.account_number = generate_account_number }
+	after_create { 
+		self.account_number = generate_account_number
+		self.save
+	 }
 
 	def generate_account_number
 		self.account_number = "DNB" + Random.rand(12345678).to_s
@@ -13,5 +16,13 @@ class CheckingAccount < ActiveRecord::Base
 
 	def all_transactions
 		return Array.new(self.withdrawls + self.deposits)
+	end
+
+	def withdraw(amount)
+		self.balance -= amount
+	end
+
+	def deposit(amount)
+		self.balance += amount
 	end
 end

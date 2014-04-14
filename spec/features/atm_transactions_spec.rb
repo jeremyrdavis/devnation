@@ -13,7 +13,7 @@ describe "ATM" do
     it "a deposit should credit the customer's account balance" do
 
         visit("/atm")
-        choose("Deposit")
+        choose("transaction_transaction_type_deposit_deposit")
         fill_in("Amount", with: "100")
         expect{ click_button("Submit")}.to change(Transaction, :count)
         expected_amount = BigDecimal.new(1400)

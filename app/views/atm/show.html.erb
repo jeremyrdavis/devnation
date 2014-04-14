@@ -10,7 +10,7 @@
     <%= form_for(:transaction, url: {controller: "atm", action: "create"} ) do |f| %>
 
       <%= f.label :transaction_type_withdrawl, "Withdrawl" %>
-      <%= f.radio_button(:transaction_type, "withdrawl", :checked => true) %>
+      <%= f.radio_button(:transaction_type, "withdrawl") %>
       <%= f.label :transaction_type, "Deposit" %>
       <%= f.radio_button(:transaction_type_deposit, "deposit") %>
       <%= f.label :amount %>

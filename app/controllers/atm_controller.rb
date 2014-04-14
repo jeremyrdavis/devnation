@@ -15,6 +15,7 @@ class AtmController < ApplicationController
 
   	transaction_type = transaction_params["transaction_type"]
   	transaction_amount = transaction_params["amount"]
+    puts "TransactionType : #{transaction_type}"
 
     @transaction = Transaction.new()
     @transaction.amount = transaction_amount
@@ -26,22 +27,34 @@ class AtmController < ApplicationController
     
     if(transaction_type == "withdrawl")
     	@transaction.from_account_id = @checking_account.account_number
-      @checking_account.balance -= @transaction.amount
     elsif (transaction_type == "deposit")
     	@transaction.to_account_id = @checking_account.account_number
-      @checking_account.balance += @transaction.amount
+    end
+
+    if(transaction_type == "withdrawl")
+      @checking_account.withdraw(@transaction.amount)
+    elsif (transaction_type == "deposit")
+      @checking_account.deposit(@transaction.amount)
+    end
+
+    begin
+      @transaction.transaction do
+        success = @transaction.save!
+        success = @checking_account.save!      
+      end 
+      # on error return the error pae
+      rescue => e
+        respond_to do |format|
+            format.html { render action: 'edit' }
+            format.json { render json: @transaction.errors, status: :unprocessable_entity }
+        end
+      return
     end
 
     respond_to do |format|
-      if @transaction.save
         format.html { redirect_to "/atm", notice: 'Transaction was successfully created.' }
         format.json { render action: 'show', status: :created, location: @transaction }
-      else
-        format.html { redirect_to "/atm", notice: 'Transaction error.' }
-        format.json { render json: @transaction.errors, status: :unprocessable_entity }
-      end
     end
   end
-
 
 end
