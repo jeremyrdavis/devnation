@@ -64,10 +64,8 @@ class CheckingAccountsController < ApplicationController
 
   def make_payment
     transaction_params = params[:transaction]
-    puts "transaction_params: #{transaction_params}"
 
     @checking_account = CheckingAccount.find_by_account_number(transaction_params[:from_account])
-    puts "\nController : CheckingAccount: #{@checking_account.inspect}\n"
     
     #build Transaction
     @transaction = Transaction.new
@@ -99,7 +97,6 @@ class CheckingAccountsController < ApplicationController
 
   def update
     @checking_account = CheckingAccount.find(params[:id])
-    puts "params[:balance] : #{params[:balance]}"
     respond_to do |format|
       if @checking_account.update_attributes(checking_account_params)
         format.html { redirect_to @checking_account, notice: 'Customer was successfully updated.' }

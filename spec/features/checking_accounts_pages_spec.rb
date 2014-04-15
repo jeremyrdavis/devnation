@@ -58,18 +58,12 @@ describe "CheckingAccountsPages" do
 		fill_in("payment_amount", with: 500)
 		fill_in("to_account", with: pay_to_account)
 
-#		puts "Transaction: #{transaction.inspect} for #{transaction.amount.to_s}"
-		puts "\nrspec : CheckingAccount : #{checking_account.inspect}\n "
-
 		expect { click_button "Make Payment"}.to change(Transaction, :count)
 		transaction = Transaction.last
-		puts "\nrspec : Transaction post save: #{transaction.inspect} for #{transaction.amount.to_s}\n"
 		expect(transaction.to_account_id).to eq(pay_to_account)
 		expect(transaction.from_account_id).to eq(checking_account.account_number)
 		expect(transaction.amount).to eq 500
 		expect(transaction.transaction_type).to eq "payment"
-		puts "\nrspec : Transaction: #{transaction.inspect} for #{transaction.amount.to_s}\n"
-		puts "\nrspec : CheckingAccount : #{checking_account.inspect}\n"
 	end
 
 

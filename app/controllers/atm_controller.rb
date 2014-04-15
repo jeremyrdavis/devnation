@@ -37,6 +37,8 @@ class AtmController < ApplicationController
       @checking_account.deposit(@transaction.amount)
     end
 
+    puts "New balance : #{@checking_account.balance.to_s}"
+
     begin
       @transaction.transaction do
         success = @transaction.save!

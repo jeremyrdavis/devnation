@@ -16,10 +16,8 @@ describe "ATM" do
         choose("transaction_transaction_type_deposit_deposit")
         fill_in("Amount", with: "100")
         expect{ click_button("Submit")}.to change(Transaction, :count)
-        expected_amount = BigDecimal.new(1400)
-        puts "Expecting #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
+        expected_amount = BigDecimal.new(1600)
         @customer.reload
-        puts "Actual #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
         expect(@customer.checking_accounts[0].balance).to eql(expected_amount)
 
     end
@@ -30,10 +28,8 @@ describe "ATM" do
         choose("Withdrawl")
         fill_in("Amount", with: "100")
         expect{ click_button("Submit")}.to change(Transaction, :count)
-        expected_amount = BigDecimal.new(1600)
-        puts "Withdrawl Expecting #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
+        expected_amount = BigDecimal.new(1400)
         @customer.reload
-        puts "Withdrawl Actual #{@customer.checking_accounts[0].balance.to_s} to eql #{expected_amount.to_s}"
         expect(@customer.checking_accounts[0].balance).to eql(expected_amount)
 
     end
