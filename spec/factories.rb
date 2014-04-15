@@ -25,8 +25,6 @@ FactoryGirl.define do
     end
   end
 
-
-
   factory :checking_account do
   	balance BigDecimal.new(1500)
   end

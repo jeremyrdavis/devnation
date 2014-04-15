@@ -11,11 +11,10 @@ class AtmController < ApplicationController
   end
 
   def create
-  	transaction_params = params["transaction"]
+    transaction_params = params["transaction"]
 
   	transaction_type = transaction_params["transaction_type"]
   	transaction_amount = transaction_params["amount"]
-    puts "TransactionType : #{transaction_type}"
 
     @transaction = Transaction.new()
     @transaction.amount = transaction_amount
@@ -36,8 +35,6 @@ class AtmController < ApplicationController
     elsif (transaction_type == "deposit")
       @checking_account.deposit(@transaction.amount)
     end
-
-    puts "New balance : #{@checking_account.balance.to_s}"
 
     begin
       @transaction.transaction do
